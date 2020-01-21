@@ -1,13 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 # User.destroy_all
 # Restaurant.destroy_all
 
+
+# ---------using faker data to seed DB----------
 # 10.times do
 #     User.create(name: Faker::Name.name, location: Faker::Address.street_address, email: Faker::Internet.email, password: 'password')
 # end
@@ -26,8 +22,50 @@
 #     Tag.create(name: 'hearty' description: 'yellow' )
 #     Tag.create(name: 'sweet' description: 'yellow' )
     
-places = GetPlaces.new
-places = places.parse_json
-places["results"].each do |restaurant|
-  TheCityRestaurant.create(location: "The City", name: restaurant["name"], address: restaurant["formatted_address"], price_range: restaurant["price_level"], rating: restaurant["rating"], google_id: restaurant["place_id"])
-end
+# -----------adding restaurants from google API ------------
+# places = GetPlaces.new
+# places = places.parse_json
+# places["results"].each do |restaurant|
+#   TheCityRestaurant.create(location: "The City", name: restaurant["name"], address: restaurant["formatted_address"], price_range: restaurant["price_level"], rating: restaurant["rating"], google_id: restaurant["place_id"])
+# end
+
+# CamdenRestaurant.all.each do |restaurant|
+#   Restaurant.create(name: restaurant[:name], area: restaurant[:location], price_range: restaurant[:price_range], address: restaurant[:address], google_rating: restaurant[:google_rating], google_id: restaurant[:google_id])
+# end
+
+# CanaryWharfRestaurant.all.each do |restaurant|
+#   Restaurant.create(name: restaurant[:name], area: restaurant[:location], price_range: restaurant[:price_range], address: restaurant[:address], google_rating: restaurant[:google_rating], google_id: restaurant[:google_id])
+# end
+
+# GreenwichRestaurant.all.each do |restaurant|
+#   Restaurant.create(name: restaurant[:name], area: restaurant[:location], price_range: restaurant[:price_range], address: restaurant[:address], google_rating: restaurant[:google_rating], google_id: restaurant[:google_id])
+# end
+
+# KingsCrossRestaurant.all.each do |restaurant|
+#   Restaurant.create(name: restaurant[:name], area: restaurant[:location], price_range: restaurant[:price_range], address: restaurant[:address], google_rating: restaurant[:google_rating], google_id: restaurant[:google_id])
+# end
+
+# PaddingtonRestaurant.all.each do |restaurant|
+#   Restaurant.create(name: restaurant[:name], area: restaurant[:location], price_range: restaurant[:price_range], address: restaurant[:address], google_rating: restaurant[:google_rating], google_id: restaurant[:google_id])
+# end
+
+# ShoreditchRestaurant.all.each do |restaurant|
+#   Restaurant.create(name: restaurant[:name], area: restaurant[:location], price_range: restaurant[:price_range], address: restaurant[:address], google_rating: restaurant[:google_rating], google_id: restaurant[:google_id])
+# end
+
+# SohoRestaurant.all.each do |restaurant|
+#   Restaurant.create(name: restaurant[:name], area: restaurant[:location], price_range: restaurant[:price_range], address: restaurant[:address], google_rating: restaurant[:google_rating], google_id: restaurant[:google_id])
+# end
+
+# SouthBankRestaurant.all.each do |restaurant|
+#   Restaurant.create(name: restaurant[:name], area: restaurant[:location], price_range: restaurant[:price_range], address: restaurant[:address], google_rating: restaurant[:google_rating], google_id: restaurant[:google_id])
+# end
+
+# TheCityRestaurant.all.each do |restaurant|
+#   Restaurant.create(name: restaurant[:name], area: restaurant[:location], price_range: restaurant[:price_range], address: restaurant[:address], google_rating: restaurant[:google_rating], google_id: restaurant[:google_id])
+# end
+
+# WestminsterRestaurant.all.each do |restaurant|
+#   Restaurant.create(name: restaurant[:name], area: restaurant[:location], price_range: restaurant[:price_range], address: restaurant[:address], google_rating: restaurant[:google_rating], google_id: restaurant[:google_id])
+# end
+
