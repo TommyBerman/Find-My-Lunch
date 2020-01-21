@@ -25,15 +25,7 @@ class UsersController < ApplicationController
         end
       end
     
-    def find_lunch_form
-        # set_user
-      @areas = Area.all
-      @tags = Tag.all
-    end
-
-    def get_lunch
-
-    end
+ 
     
       private
     

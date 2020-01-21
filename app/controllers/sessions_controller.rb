@@ -20,4 +20,24 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to '/login'
   end
+
+
+  def find_lunch_form
+      # set_user
+    @areas = Area.all
+    @tags = Tag.all
+    @price_ranges = Restaurant.price_ranges
+  end
+
+  def get_lunch
+    puts session_params
+    byebug
+    redirect_to restaurants_path
+  end
+
+  private
+
+  def session_params
+    params.require(:session).permit(:user_id, :area_id, :tag_ids)
+  end
 end
