@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_095135) do
+ActiveRecord::Schema.define(version: 2020_01_21_110826) do
+
+  create_table "areas", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "camden_restaurants", force: :cascade do |t|
     t.string "name"
@@ -68,7 +72,6 @@ ActiveRecord::Schema.define(version: 2020_01_21_095135) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
-    t.string "area"
     t.integer "price_range"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
@@ -76,6 +79,8 @@ ActiveRecord::Schema.define(version: 2020_01_21_095135) do
     t.string "address"
     t.string "google_rating"
     t.string "google_id"
+    t.integer "area_id"
+    t.index ["area_id"], name: "index_restaurants_on_area_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -139,11 +144,12 @@ ActiveRecord::Schema.define(version: 2020_01_21_095135) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "location"
     t.string "email"
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "area_id"
+    t.index ["area_id"], name: "index_users_on_area_id"
   end
 
   create_table "westminster_restaurants", force: :cascade do |t|
@@ -157,6 +163,8 @@ ActiveRecord::Schema.define(version: 2020_01_21_095135) do
 
   add_foreign_key "restaurant_tags", "restaurants"
   add_foreign_key "restaurant_tags", "tags"
+  add_foreign_key "restaurants", "areas"
   add_foreign_key "reviews", "restuarants"
   add_foreign_key "reviews", "users"
+  add_foreign_key "users", "areas"
 end
