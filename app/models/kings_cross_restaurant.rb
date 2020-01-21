@@ -1,0 +1,2 @@
+class KingsCrossRestaurant < ApplicationRecord
+end

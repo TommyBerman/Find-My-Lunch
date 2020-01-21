@@ -1,0 +1,2 @@
+class CamdenRestaurant < ApplicationRecord
+end

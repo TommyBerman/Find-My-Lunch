@@ -1,0 +1,2 @@
+class GreenwichRestaurant < ApplicationRecord
+end

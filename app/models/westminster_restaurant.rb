@@ -1,0 +1,2 @@
+class WestminsterRestaurant < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class SohoRestaurant < ApplicationRecord
+end
