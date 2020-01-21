@@ -1,0 +1,2 @@
+class CanaryWharfRestaurant < ApplicationRecord
+end

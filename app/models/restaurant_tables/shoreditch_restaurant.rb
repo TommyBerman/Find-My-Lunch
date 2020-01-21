@@ -1,0 +1,2 @@
+class ShoreditchRestaurant < ApplicationRecord
+end

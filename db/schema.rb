@@ -10,7 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_20_141619) do
+ActiveRecord::Schema.define(version: 2020_01_21_095135) do
+
+  create_table "camden_restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "address"
+    t.integer "price_range"
+    t.float "rating"
+    t.string "google_id"
+  end
+
+  create_table "canary_wharf_restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "address"
+    t.integer "price_range"
+    t.float "rating"
+    t.string "google_id"
+  end
+
+  create_table "greenwich_restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "address"
+    t.integer "price_range"
+    t.float "rating"
+    t.string "google_id"
+  end
+
+  create_table "kings_cross_restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "address"
+    t.integer "price_range"
+    t.float "rating"
+    t.string "google_id"
+  end
+
+  create_table "paddington_restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "address"
+    t.integer "price_range"
+    t.float "rating"
+    t.string "google_id"
+  end
 
   create_table "restaurant_tags", force: :cascade do |t|
     t.integer "restaurant_id", null: false
@@ -23,11 +68,14 @@ ActiveRecord::Schema.define(version: 2020_01_20_141619) do
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
-    t.string "location"
+    t.string "area"
     t.integer "price_range"
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "address"
+    t.string "google_rating"
+    t.string "google_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -42,11 +90,51 @@ ActiveRecord::Schema.define(version: 2020_01_20_141619) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "shoreditch_restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "address"
+    t.integer "price_range"
+    t.float "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "google_id"
+  end
+
+  create_table "soho_restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "address"
+    t.integer "price_range"
+    t.float "rating"
+    t.string "google_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "south_bank_restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "address"
+    t.integer "price_range"
+    t.float "rating"
+    t.string "google_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "the_city_restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "address"
+    t.integer "price_range"
+    t.float "rating"
+    t.string "google_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,6 +144,15 @@ ActiveRecord::Schema.define(version: 2020_01_20_141619) do
     t.string "password"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "westminster_restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "address"
+    t.integer "price_range"
+    t.float "rating"
+    t.string "google_id"
   end
 
   add_foreign_key "restaurant_tags", "restaurants"
