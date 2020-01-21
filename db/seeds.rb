@@ -4,9 +4,11 @@
 
 
 # ---------using faker data to seed DB----------
-10.times do
-    User.create(name: Faker::Name.name, location: Faker::Address.street_address, email: Faker::Internet.email, password: 'password')
-end
+
+# 10.times do
+#     User.create(name: Faker::Name.name, location: Faker::Address.street_address, email: Faker::Internet.email, password: 'password')
+# end
+
 
     # Tag.create(name: 'spicy', description: 'Food with a kick to warm the cockles' )
     # Tag.create(name: 'healthy', description: "Guilt-free lunch doesn't have to be boring" )
@@ -18,13 +20,17 @@ end
     # Tag.create(name: 'sweet', description: 'Indulge that sweet tooth' )
     
 # -----------adding restaurants from google API ------------
-# places = GetPlaces.create
+# places = GetPlaces.new
 # places = places.parse_json
 # places["results"].each do |restaurant|
-#   TheCityRestaurant.create(location: "The City", name: restaurant["name"], address: restaurant["formatted_address"], price_range: restaurant["price_level"], rating: restaurant["rating"], google_id: restaurant["place_id"])
+#   WestminsterRestaurant.create(name: restaurant["name"], address: restaurant["formatted_address"], price_range: restaurant["price_level"], rating: restaurant["rating"], google_id: restaurant["place_id"])
 # end
 
-# ----------adding areas and 
+
+# ----------adding areas and restaurants ----
+
+
+
 
 # camden = Area.create(name: "Camden")
 # canary_wharf = Area.create(name: "Canary Wharf")
@@ -81,3 +87,4 @@ end
 # 500.times do
 #     RestaurantTag.create(restaurant: Restaurant.all.sample, tag: Tag.all.sample)
 # end
+
