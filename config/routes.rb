@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+  root to: 'users#splash'
+  get '/login', to: 'sessions#new', as: :login
+  post '/login', to: 'sessions#create'
+  get '/logout', to: 'sessions#destroy', as: :logout
+  get '/signup', to: 'users#new', as: :signup
+  post '/signup', to:'users#create'
   resources :tags, only: [:index]
   # resources :reviews
   resources :restaurants, only: [:index, :show]
-  resources :users, only: [:index, :show, :new, :create, :edit, :update ]
+  resources :users, only: [:index, :show, :create, :edit, :update ]
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

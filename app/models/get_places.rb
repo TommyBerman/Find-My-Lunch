@@ -4,7 +4,7 @@ require 'json'
  
 class GetPlaces
  
-  URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+City+of+London&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20"
+  URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+Westminster&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20"
  
   def get_places
     uri = URI.parse(URL)

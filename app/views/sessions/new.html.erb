@@ -1,0 +1,25 @@
+<h1>Login</h1>
+
+<%= form_tag '/login' do %>
+
+  Email: <%= email_field_tag :email %>
+  Password: <%= password_field_tag :password %>
+  <%= submit_tag "Log Me In!" %>
+
+<% end %>
+
+<% if flash[:errors] %>
+    <div class="errors">
+        <h4>Oops!</h4>
+    <% flash[:errors].each do |error| %>
+        <p><%= error %></p>
+    <% end %>
+    </div>
+<% end %>
+<% if flash[:notice] %>
+    <div class="errors">
+        <h4>Oops!</h4>
+        <p><%= flash[:notice] %></p>
+        <p><%= link_to "Sign Up", signup_path %></p>
+    </div>
+  <% end %>
