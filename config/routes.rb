@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/find_lunch_form', to: 'sessions#find_lunch_form', as: 'find_lunch_form'
   post '/get_lunch', to: 'sessions#get_lunch'
 
-  resources :tags, only: [:index]
+  resources :tags, only: [:index, :show]
   # resources :reviews
   resources :restaurants, only: [:index, :show]
   resources :users, only: [:index, :show, :create, :edit, :update ]
