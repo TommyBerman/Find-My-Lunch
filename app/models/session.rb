@@ -29,7 +29,7 @@ class Session < ApplicationRecord
 
         if final_filter.count > 0
             final_filter
-        elsif tags_filter > 0
+        elsif tags_filter.count > 0
             flash[:notice] = "Sorry! We couldn't find anything in your price range, but here's something nearby that meets your cravings!"
             tags_filter
         else

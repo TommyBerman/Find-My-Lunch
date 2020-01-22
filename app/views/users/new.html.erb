@@ -13,7 +13,6 @@
 
 <% if flash[:errors] %>
     <div class="errors">
-        <h4>Oops!</h4>
     <% flash[:errors].each do |error| %>
         <p><%= error %></p>
     <% end %>

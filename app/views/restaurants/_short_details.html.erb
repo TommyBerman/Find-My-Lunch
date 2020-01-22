@@ -1,0 +1,11 @@
+<h1><%= @restaurant.name %></h1>
+
+<h3><%= @restaurant.area.name %></h3>
+
+<h4>Price range: <%= @restaurant.price_name %></h4>
+
+<h4>Tags: </h4>
+<% @restaurant.my_tags.each do |tag| %>
+    <h5><%= tag.name %></h5>
+<% end %>
+<h4><%= link_to "Google reviews score: #{@restaurant.google_rating}", "https://search.google.com/local/writereview?placeid=#{@restaurant.google_id}" %>
