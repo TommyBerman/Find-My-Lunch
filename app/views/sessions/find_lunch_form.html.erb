@@ -1,16 +1,18 @@
 <h1>Hi, let us help you find your lunch!<h1>
 
 
-
+<div>
 <%= form_for :session, url: '/get_lunch'  do |f| %>
-    <h2><%= f.label "Where are you?" %></h2>
-    <%= f.collection_select :area_id, @areas, :id, :name %>
-    <h2><%= f.label "What do you feel like?" %></h2>
-    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name %>
-    <%= f.label "How much do you want to spend?" %>
- 
-
-    <%= f.submit "Find my lunch!" %>
-
-
+    <p><%= f.label "Where are you?" %><br>
+    <%= f.collection_select :area_id, @areas, :id, :name %><br></p>
+    <p><%= f.label "What do you feel like?" %><br>
+    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name %><br></p>
+    <p><%= f.label "How much do you want to spend?" %><br>
+    <% @price_ranges.each do |price| %>
+            <%= f.radio_button :price_range, price %>
+            <%= f.label :price_range, price %>
+    <% end %></p>
+    <br>
+    <p><%= f.submit "Find my lunch!" %></p>
 <% end %>
+</div>
