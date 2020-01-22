@@ -5,6 +5,24 @@ class Restaurant < ApplicationRecord
     has_many :tags, through: :restaurant_tags
     belongs_to :area
 
+
+    def price_name
+        if self.price_range == 1
+            "Keep it cheap"
+        elsif self.price_range == 2
+            "Not too pricey"
+        elsif self.price_range == 3
+            "Open to options but it isn't payday"
+        elsif self.price_range == 4
+            "Splash out a little"
+        else
+            "Blow the bank!"
+        end
+    end
+
+    def my_tags
+        self.tags.uniq
+    end
     
     def self.price_ranges
         pr = Restaurant.all.map{ |r| r.price_range} .uniq.sort
