@@ -28,8 +28,9 @@ class SessionsController < ApplicationController
   end
 
   def get_lunch
-    Session.find_restaurants(session_params)
-    redirect_to restaurants_path
+    @options = Session.find_restaurants(session_params)
+    @restaurant = @options.sample
+    redirect_to restaurant_path(@restaurant)
   end
 
   private
