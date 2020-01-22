@@ -3,6 +3,8 @@ class UsersController < ApplicationController
     # before_action :set_user
 
     def show
+      @user = User.find(params[:id])
+      @reviews = Review.find(user_id: params[:id])
     end
 
     def splash
@@ -42,7 +44,7 @@ class UsersController < ApplicationController
        end
       
       def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation, :area_id, tag_attributes: [:id], restaurant_attributes: [:price_range])
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :area_id, tag_attributes: [:id], restaurant_attributes: [:price_range], review_attributes: [])
       end
 
 end

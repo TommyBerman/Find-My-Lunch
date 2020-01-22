@@ -1,0 +1,6 @@
+<h1><%= @user.name%>'s Account Page</h1>
+<h2>My Reviews: <% @reviews.each do |review| %></h2>
+<ul>
+<li><%= review%></li>
+</ul>
+<% end %>
