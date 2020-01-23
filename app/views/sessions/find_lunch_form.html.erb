@@ -4,10 +4,11 @@
 <div>
 <%= form_for :session, url: '/get_lunch'  do |f| %>
     <p><%= f.label "Where are you?" %><br>
-    <%= f.collection_select :area_id, @areas, :id, :name %><br></p>
+    <%= f.collection_select :area_id, @areas, :id, :name, {:selected => @current_user.area.id } %><br></p>
     <p><%= f.label "What do you feel like?" %><br>
     <%= f.collection_check_boxes :tag_ids, @tags, :id, :name %><br></p>
-    <p><%= f.label "How much do you want to spend on a scale of... <br>'keep it cheap' to 'blow the bank'?" %><br>
+    <p><%= f.label "How much do you want to spend on a scale of..."%>
+    <br>'Keep it cheap' to 'Blow the bank'?<br>
     <% @price_ranges.each do |price| %>
             <%= f.radio_button :price_range, price %>
             <%= f.label :price_range, price %>

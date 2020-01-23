@@ -1,7 +1,27 @@
-<h1><%= @user.name%>'s Account Page</h1>
+<h1><%= @user.name%>'s Account</h1>
 
-<h2>My Reviews: <% @reviews.each do |review| %></h2>
+<p><%= link_to "Edit my account details", edit_user_path(@user) %></p>
+
+<h2>My lunch: </h2>
+<h3>
+<% if @restaurant %>
+    <%= link_to @restaurant.name, restaurant_path(@restaurant) %>, <%= @restaurant.area.name %>
+<% else %>
+    You haven't found your lunch today! <%= link_to "Use the form to find your lunch", find_lunch_form_path %>!
+<% end %>
+</h3>
+
+<h2>My Reviews:</h2>
 <ul>
-<li><%= review%></li>
+    <%  if @user.reviews == [] %>
+        <p>You haven't reviewed anywhere yet! <% if @restaurant %><%= link_to "Visit the page for the last place you ate", restaurant_path(@restaurant) %>, or <% end %><%= link_to "Use the form to find your lunch", find_lunch_form_path %> then tell us what you thought!</p>
+    <% else %>
+        <% @reviews.each do |review| %>
+            <li>
+            <ul><%= @user.review.title %>
+                <li>Stars: <%= @user.review.stars %></li>
+                <li>Thoughts: <%= @user.review.stars %></li>
+        </li>
+        <% end %>
 </ul>
 <% end %>

@@ -8,18 +8,9 @@
 
 <% end %>
 
-<% if flash[:errors] %>
-    <div class="errors">
-        <h4>Oops!</h4>
-    <% flash[:errors].each do |error| %>
-        <p><%= error %></p>
-    <% end %>
-    </div>
-<% end %>
+
 <% if flash[:notice] %>
-    <div class="errors">
-        <h4>Oops!</h4>
-        <p><%= flash[:notice] %></p>
+    <div class = "messages" >
         <p><%= link_to "Sign Up", signup_path %></p>
     </div>
   <% end %>
