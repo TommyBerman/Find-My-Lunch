@@ -6,5 +6,4 @@ class Review < ApplicationRecord
     validates :content, length: {minimum:20, maximum:250}
     validates :stars, numericality: {less_than_or_equal_to:5, greater_than:0}
     
-    
 end

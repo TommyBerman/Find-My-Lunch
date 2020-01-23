@@ -33,8 +33,19 @@ class SessionsController < ApplicationController
     @options = Session.find_restaurants(session_params)
     @restaurant = @options.sample
     session[:restaurant_id] = @restaurant.id
+    flash[:notice] = $notice
     redirect_to first_result_path(@restaurant)
   end
+
+  # def something_else
+  #   @options = Session.find_restaurants(session_params)
+  #   @restaurant = @options.sample
+  #   session[:restaurant_id] = @restaurant.id
+  #   flash[:notice] = $notice
+  #   redirect_to first_result_path(@restaurant)
+  # end
+  
+
 
   private
 
