@@ -32,22 +32,101 @@ the_city = Area.create(name: "The City")
 westminster = Area.create(name: "Westminster")
 
 # # -----------adding restaurants from google API ------------
-@areas = Area.all
-@areas.each do |ar|
-  place_name = ar.name.gsub(/[ ']/, " " => "+", "'" => "%27")
-  places = GetPlaces.new(place_name)
+# @areas = Area.all
+# @areas.each do |ar|
+#   place_name = ar.name.gsub(/[ ']/, " " => "+", "'" => "%27")
+
+# --camden--
+  places = GetPlaces.new("https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+camden&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20")
   places = places.parse_json
   
   places["results"].each do |restaurant|
-    Restaurant.create(name:restaurant["name"], area_id: ar.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
+    Restaurant.create(name:restaurant["name"], area_id: camden.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
   end
-end
+
+  #--canary wharf--
+  places = GetPlaces.new("https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+canary+wharf&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20")
+  places = places.parse_json
+  
+  places["results"].each do |restaurant|
+    Restaurant.create(name:restaurant["name"], area_id: canary_wharf.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
+  end
+
+  #--greenwich--
+  places = GetPlaces.new("https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+greenwich&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20")
+  places = places.parse_json
+  
+  places["results"].each do |restaurant|
+    Restaurant.create(name:restaurant["name"], area_id: greenwich.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
+  end
+
+  #--kings_cross--
+  places = GetPlaces.new("https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+kings+cross&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20")
+  places = places.parse_json
+  
+  places["results"].each do |restaurant|
+    Restaurant.create(name:restaurant["name"], area_id: kings_cross.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
+  end
+
+  #--paddington--
+  places = GetPlaces.new("https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+paddington&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20")
+  places = places.parse_json
+  
+  places["results"].each do |restaurant|
+    Restaurant.create(name:restaurant["name"], area_id: paddington.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
+  end
+
+  #--shoreditch--
+  places = GetPlaces.new("https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+shoreditch&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20")
+  places = places.parse_json
+  
+  places["results"].each do |restaurant|
+    Restaurant.create(name:restaurant["name"], area_id: shoreditch.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
+  end
+
+  #--soho--
+  places = GetPlaces.new("https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+soho&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20")
+  places = places.parse_json
+  
+  places["results"].each do |restaurant|
+    Restaurant.create(name:restaurant["name"], area_id: soho.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
+  end
+
+  #--south bank--
+  places = GetPlaces.new("https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+london+south+bank&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20")
+  places = places.parse_json
+  
+  places["results"].each do |restaurant|
+    Restaurant.create(name:restaurant["name"], area_id: south_bank.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
+  end
+
+  #--city--
+  places = GetPlaces.new("https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+city+of+london&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20")
+  places = places.parse_json
+  
+  places["results"].each do |restaurant|
+    Restaurant.create(name:restaurant["name"], area_id: the_city.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
+  end
+
+  #--westminster--
+  places = GetPlaces.new("https://maps.googleapis.com/maps/api/place/textsearch/json?query=lunch+in+westminster&key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20")
+  places = places.parse_json
+  
+  places["results"].each do |restaurant|
+    Restaurant.create(name:restaurant["name"], area_id: westminster.id, address: restaurant["formatted_address"], price_range: restaurant["price_level"], google_rating: restaurant["rating"], google_id: restaurant["place_id"])
+  end
 
 
 # # ----creating restaurant tags randomly --------
 500.times do
     RestaurantTag.create(restaurant: Restaurant.all.sample, tag: Tag.all.sample)
 end
+
+# -- ensuring every restaurant has a tag
+Restaurant.add_restaurant_tag
+
+# -- ensuring every restaurant has a price range
+Restaurant.add_price_range
 
 # # ----creating users tags randomly -------- DO NOT USE FORMAT INCORRECT
 
