@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:index, :show]
   # resources :reviews
   resources :restaurants, only: [:index, :show]
-  resources :users, only: [:index, :show, :create, :edit, :update ]
+  resources :users
+  resources :reviews
 
 end
