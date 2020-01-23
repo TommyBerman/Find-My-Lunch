@@ -3,6 +3,7 @@ class RestaurantsController < ApplicationController
     
     def index
         @restaurants = Restaurant.all 
+        
     end 
 
     def first_result
@@ -11,9 +12,15 @@ class RestaurantsController < ApplicationController
     end
 
     def show
+        @user = @current_user
         rest_id = session[:restaurant_id]
         @restaurant = Restaurant.find(rest_id)
         @request_id = @restaurant.google_id
+        @review = Review.new
+        @reviews = Review.all.select {
+            |review| review.restaurant == @restaurant
+        }
+
     end
 
     private

@@ -1,0 +1,14 @@
+<%= form_for @review do |f| %>
+<h3>Leave a review for this Restaurant</h3>
+  <%= f.label :title %>
+  <%= f.text_field :title %><br>
+  <%= f.label "Tell us your thoughts" %>
+  <%= f.text_area :content %><br>
+  <%= f.label :stars %>
+  <%= f.number_field :stars %><br>
+  <%= f.hidden_field :user_id, value: @user.id %><br>
+  <%= f.hidden_field :restaurant_id, value: @restaurant.id %><br>
+
+  <%= f.submit "Submit Review" %>
+
+<% end %>

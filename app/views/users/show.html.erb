@@ -16,12 +16,7 @@
     <%  if @user.reviews == [] %>
         <p>You haven't reviewed anywhere yet! <% if @restaurant %><%= link_to "Visit the page for the last place you ate", restaurant_path(@restaurant) %>, or <% end %><%= link_to "Use the form to find your lunch", find_lunch_form_path %> then tell us what you thought!</p>
     <% else %>
-        <% @reviews.each do |review| %>
-            <li>
-            <ul><%= @user.review.title %>
-                <li>Stars: <%= @user.review.stars %></li>
-                <li>Thoughts: <%= @user.review.stars %></li>
-        </li>
+        <%= render :partial=> 'reviews/reviews_list'%>
         <% end %>
-</ul>
-<% end %>
+
+

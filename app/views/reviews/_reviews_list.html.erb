@@ -1,0 +1,10 @@
+<h3>Reviews:</h3>
+<ol>
+<% @reviews.each do |review| %>
+<li><ul>
+    <li><%= review.title%></li><br>
+    <li>Stars: <%= review.stars%></li><br>
+    <li>Thoughts: <%= review.content%></li><br>
+    </ul></li>
+<% end%>
+</ol>

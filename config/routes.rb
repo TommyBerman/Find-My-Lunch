@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/your_lunch/:id', to: 'restaurants#first_result', as: 'first_result'
 
   resources :tags, only: [:index, :show]
-  # resources :reviews
+  resources :reviews
   resources :restaurants, only: [:index, :show]
   resources :users
 

@@ -41,10 +41,10 @@ ActiveRecord::Schema.define(version: 2020_01_22_161636) do
     t.text "content"
     t.integer "stars"
     t.integer "user_id", null: false
-    t.integer "restuarant_id", null: false
+    t.integer "restaurant_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["restuarant_id"], name: "index_reviews_on_restuarant_id"
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_01_22_161636) do
   add_foreign_key "restaurant_tags", "restaurants"
   add_foreign_key "restaurant_tags", "tags"
   add_foreign_key "restaurants", "areas"
-  add_foreign_key "reviews", "restuarants"
+  add_foreign_key "reviews", "restaurants"
   add_foreign_key "reviews", "users"
   add_foreign_key "users", "areas"
 end
