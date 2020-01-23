@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/something_else', to: 'sessions#find_lunch_form', as: 'something_else'
 
   resources :tags, only: [:index, :show]
-  # resources :reviews
+  resources :reviews
   resources :restaurants, only: [:index, :show]
   resources :users
   resources :reviews
