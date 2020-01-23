@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-    # before_action :logged_in?
-    # before_action :set_current_user
+    before_action :set_current_user
     helper_method :logged_in?
     protect_from_forgery with: :exception
 
@@ -16,6 +15,6 @@ class ApplicationController < ActionController::Base
     end
     
     def authorize
-        redirect_to '/login' unless current_user
+        redirect_to '/login' unless @current_user
     end
 end
