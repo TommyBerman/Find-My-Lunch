@@ -2,22 +2,23 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def create
-    @@user = User.find_by_email(params[:email])
+  def authenticate
+    reset_session
+    user = User.find_by_email(params[:email])
     # If the user exists AND the password entered is correct.
-    if !(@@user && @@user.authenticate(params[:password]))
-      $logged_in = true
+    if !(user && user.authenticate(params[:password]))
+      session[:user_id] = nil
       flash[:notice] = "Sorry we can't find those details..."
       redirect_to '/login'
     else
       flash[:notice] = "You have logged in successfully!"
-      session[:user_id] = @@user.id
+      session[:user_id] = user.id
       redirect_to find_lunch_form_path
     end
   end
 
   def destroy
-    session[:user_id] = nil
+    session.delete(:user_id)
     flash[:notice] = "You have been logged out"
     redirect_to '/'
   end

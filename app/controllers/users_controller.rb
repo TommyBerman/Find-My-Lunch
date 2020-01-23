@@ -2,7 +2,9 @@ class UsersController < ApplicationController
 
     def show
       @user = User.find(params[:id])
-      @restaurant = Restaurant.find(session[:restaurant_id])
+      if session[:restaurant_id]
+        @restaurant = Restaurant.find(session[:restaurant_id])
+      end
     end
 
     def splash
@@ -38,7 +40,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect_to @user
       else
-        flash[:errors] = user.errors.full_messages
+        flash[:errors] = @user.errors.full_messages
         redirect_to edit_user_path(@user)
       end
     end
