@@ -15,38 +15,38 @@
 
   <body class="text-center">
 
-  <nav class="text-center navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav text-white float-right">
-      <% if logged_in? %>
-        <%= link_to 'Find My Lunch', find_lunch_form_path, class:"btn btn-light" %>
-       <%= link_to 'My Account', user_path(@current_user), class:"btn btn-light" %>
-        <a class="nav-item nav-link text-white"><%= link_to 'Log Out', logout_path, class:"btn btn-light" %>
-      <% else %>
-        <%= link_to 'Log In', login_path, class:"btn btn-dark" %>
-        <%= link_to 'Sign Up', signup_path, class:"btn btn-light" %>
-      <% end %>
+  <nav class="text-center navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav float-right">
+        <% if logged_in? %>
+          <%= link_to 'Find My Lunch', find_lunch_form_path, class:"btn btn-dark" %>
+        <%= link_to 'My Account', user_path(@current_user), class:"btn btn-dark" %>
+          <a class="nav-item nav-link text-white"><%= link_to 'Log Out', logout_path, class:"btn btn-dark" %>
+        <% else %>
+          <%= link_to 'Log In', login_path, class:"btn btn-dark" %>
+          <%= link_to 'Sign Up', signup_path, class:"btn btn-dark" %>
+        <% end %>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
+  <div class="flash-notices">
+    <% if flash[:errors] %>
+      <div class="alert alert-danger">
+        <% flash[:errors].each do |error| %>
+          <p><%= error %></p>
+        <% end %>
+      </div>
     
-    </nav>
-    <div class="messages">
-      <% if flash[:errors] %>
-        <div class="errors">
-          <% flash[:errors].each do |error| %>
-            <p><%= error %></p>
-          <% end %>
-        </div>
       <% end %>
       <% if flash[:notice] %>
-        <p><%= flash[:notice] %></p>
+        <div class="alert alert-info" role="alert">
+          <%= flash[:notice] %></div>
       <% end %>
-    </div>
+  </div>
 
     <%= yield %>
 

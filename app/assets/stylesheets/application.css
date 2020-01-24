@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+ /*
+ *= require rails_bootstrap_forms
+ */
 html {
     height: 100%;
 }
@@ -28,7 +32,7 @@ body {
 
 .btn-dark:hover {
     background-color: #F0F0F2;
-    color: ;
+    color: #343a40;
 }
 
 .container {
@@ -39,14 +43,24 @@ body {
     flex-direction: column;
 }
 
+.btn-info {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+
 
 .jumbotron {
     background-color: white;
-    opacity: 0.7;
+    opacity: 0.9;
 }
 
 #login {
     background-color: white;
-    opacity: 0.7;
+    opacity: 0.9;
+}
+
+#food-form {
+    font-size: 15px;
 }
 

@@ -5,5 +5,20 @@
             <%= link_to "I've been here before...", login_path, class:"btn btn-lg btn-info" %><br><br>
             <%= link_to "I'm brand new, sign me up!", signup_path, class:"btn btn-lg btn-info" %>
         </div>
+        <div class="flash-notices">
+            <% if flash[:errors] %>
+
+                    <% flash[:errors].each do |error| %>
+                    <p><%= error %></p>
+                    <% end %>
+
+            <% end %>
+
+            <% if flash[:notice] %>
+                <div class="alert alert-info" role="alert">
+                <%= flash[:notice] %><
+                /div>
+            <% end %>
+        </div>
     </main>
 </div>
