@@ -1,16 +1,24 @@
-<h1>Login</h1>
 
-<%= form_tag '/login' do %>
+<div class="container">
+  <div id="login" class="jumbotron p-4 p-md-5 text-secondary">
+  <h1>Login</h1>
+    <form class="form-signin">
+      <%= form_tag '/login' do %>
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <%= email_field_tag :email, "Email address" %>
+      <%= password_field_tag :password %>
+      <br><br>
+      <%= submit_tag "Log Me In!", class: "btn btn-lg btn-info" %>
 
-  Email: <%= email_field_tag :email %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Log Me In!" %>
-
-<% end %>
-
+    <% end %>
+    </form>
+  </div>
+</div>
 
 <% if flash[:notice] %>
     <div class = "messages" >
         <p><%= link_to "Sign Up", signup_path %></p>
     </div>
   <% end %>
+
+

@@ -1,2 +1,9 @@
-<h1>Find My Lunch</h1>
-<p><%= link_to "I've been here before...", login_path, class: 'button' %></p><%= link_to "I'm brand new, sign me up!", signup_path, class: 'button' %>
+<div class="container">
+    <main role="main" class="inner cover jumbotron p-4 p-md-5 text-secondary">
+        <h1 class="cover heading">Find My Lunch</h1><br>
+        <div>
+            <%= link_to "I've been here before...", login_path, class:"btn btn-lg btn-info" %><br><br>
+            <%= link_to "I'm brand new, sign me up!", signup_path, class:"btn btn-lg btn-info" %>
+        </div>
+    </main>
+</div>
