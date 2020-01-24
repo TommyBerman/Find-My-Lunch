@@ -1,10 +1,13 @@
-<h3>Reviews:</h3>
-<ol>
+
+<h2>Reviews</h2>
+<ul class="list-group">
 <% @reviews.each do |review| %>
-<li><ul>
-    <li><%= review.title%></li><br>
-    <li>Stars: <%= review.stars%></li><br>
-    <li>Thoughts: <%= review.content%></li><br>
-    </ul></li>
+<li class="list-group-item">
+<div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><%= review.title%></h5>
+      <small><%= review.stars%> / 5 stars</small>
+    </div>
+    <p class="mb-1"><%= review.content%></p>
 <% end%>
-</ol>
+</ul>
+

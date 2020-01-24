@@ -1,11 +1,15 @@
-<h1><%= @restaurant.name %></h1>
-
-<h3><%= @restaurant.area.name %></h3>
-
-<h4>Price range: <%= @restaurant.price_name %></h4>
-
-<h4>Tags: </h4>
-<% @restaurant.my_tags.each do |tag| %>
-    <h5><%= tag.name %></h5>
-<% end %>
-<h4><%= link_to "Google reviews score: #{@restaurant.google_rating}", "https://search.google.com/local/writereview?placeid=#{@restaurant.google_id}" %>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @restaurant.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @restaurant.area.name %></h6>
+    <p class="card-text">Price range: <%= @restaurant.price_name %></p>
+    <p class="card-text">
+        <% @restaurant.my_tags.each do |tag| %>
+        <span class="badge badge-info"><%= tag.name %></span>
+        <% end %>
+    </p>
+    <a href="<%= "https://search.google.com/local/writereview?placeid=#{@restaurant.google_id}"%>" class="card-link">
+    <%= "Google reviews score: #{@restaurant.google_rating}"%>
+    </a>
+  </div>
+</div>

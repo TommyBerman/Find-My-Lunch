@@ -12,15 +12,15 @@ class RestaurantsController < ApplicationController
     end
     
     def show
+        session[:restaurant_id] = params[:id].to_i
         @user = @current_user
         rest_id = session[:restaurant_id]
         @restaurant = Restaurant.find(rest_id)
         @request_id = @restaurant.google_id
         @review = Review.new
         @reviews = Review.all.select {
-            |review| review.restaurant == @restaurant
+            |review| review.restaurant_id == rest_id
         }
-
     end
 
     private
