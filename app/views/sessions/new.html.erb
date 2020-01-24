@@ -1,9 +1,9 @@
 
 <div class="container">
   <div id="login" class="jumbotron p-4 p-md-5 text-secondary">
-  <h1>Login</h1>
-    <form class="form-signin">
-      <%= form_tag '/login' do %>
+  <h1 class: >Login</h1>
+    
+      <%= bootstrap_form_tag url: '/login' do %>
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <%= email_field_tag :email, "Email address" %>
       <%= password_field_tag :password %>
@@ -11,12 +11,14 @@
       <%= submit_tag "Log Me In!", class: "btn btn-lg btn-info" %>
 
     <% end %>
-    </form>
+    
+      
+    
   </div>
 </div>
 
 <% if flash[:notice] %>
-    <div class = "messages" >
+    <div class="alert alert-danger" role="alert">
         <p><%= link_to "Sign Up", signup_path %></p>
     </div>
   <% end %>

@@ -1,19 +1,24 @@
-<h1>Hi, let us help you find your lunch!<h1>
 
 
-<div>
-<%= form_for :session, url: '/get_lunch'  do |f| %>
-    <p><%= f.label "Where are you?" %><br>
-    <%= f.collection_select :area_id, @areas, :id, :name, {:selected => @current_user.area.id } %><br></p>
-    <p><%= f.label "What do you feel like?" %><br>
-    <%= f.collection_check_boxes :tag_ids, @tags, :id, :name %><br></p>
-    <p><%= f.label "How much do you want to spend on a scale of..."%>
-    <br>'Keep it cheap' to 'Blow the bank'?<br>
-    <% @price_ranges.each do |price| %>
-            <%= f.radio_button :price_range, price %>
-            <%= f.label :price_range, price %>
-    <% end %></p>
-    <br>
-    <p><%= f.submit "Find my lunch!" %></p>
-<% end %>
+
+<div class="container">
+  <div id="login" class="jumbotron p-4 p-md-5 text-secondary">
+    <h1>Hi, let us help you find your lunch!<h1>
+        <div id="food-form">
+            <%= bootstrap_form_for :session, url: '/get_lunch'  do |f| %>
+                <%= f.label "Where are you?" %>
+                <%= f.collection_select :area_id, @areas, :id, :name, {:selected => @current_user.area.id } %>
+                <%= f.label "What do you feel like?" %>
+                <%= f.collection_check_boxes :tag_ids, @tags, :id, :name, hide_label: true %>
+                <%= f.label "How much do you want to spend on a scale of..."%>
+                <br>'Keep it cheap' to 'Blow the bank'?
+                <% @price_ranges.each do |price| %>
+                        <%= f.radio_button :price_range, price %>
+                        <%= f.label :price_range, price %>
+                <% end %>
+                <br>
+                <p><%= f.submit "Find my lunch!" %></p>
+            <% end %>
+        <div>
+    <div>
 </div>

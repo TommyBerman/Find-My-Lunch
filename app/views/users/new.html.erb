@@ -1,13 +1,16 @@
-<h1>Welcome new and hungry soul! Please sign up to find something tasty!</h1>
-
-<%= form_for :user, url: '/signup' do |f| %>
-
-  Name: <%= f.text_field :name %>
-  Email: <%= f.email_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  Location: <%= f.collection_select(:area_id, @areas, :id, :name) %>
-  <%= f.submit "Sign Me In!" %>
-
-<% end %>
+<div class="container">
+  <div id="signup" class="jumbotron p-4 p-md-5 text-secondary">
+    <h1>Welcome!<h1>
+    <h2>Please sign up to find something tasty!</h2>
+    <br>
+      <%= bootstrap_form_for :user, url: '/signup' do |f| %>
+        <%= f.text_field :name %>
+        <%= f.email_field :email %>
+        <%= f.password_field :password %>
+        <%= f.password_field :password_confirmation %>
+        <%= f.collection_select(:area_id, @areas, :id, :name) %>
+        <%= f.submit "Sign Me In!" %>
+      <% end %>
+  </div>
+</div>
 
