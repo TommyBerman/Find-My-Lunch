@@ -1,16 +1,26 @@
-<%= form_for @review do |f| %>
+<div class="card m-3">
+    <div class="card-header">
+        Leave a review for this Restaurant
+    </div>
+    <div class="card-body">
+        <%= form_for @review do |f| %>
+        <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label "Tell us your thoughts" %>
+            <%= f.text_area :content, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :stars %>
+            <%= f.number_field :stars, class: "form-control" %>
+        </div>
+          <%= f.hidden_field :user_id, value: @user.id %><br>
+          <%= f.hidden_field :restaurant_id, value: @restaurant.id %>
 
-<h3>Leave a review for this Restaurant</h3>
+          <%= f.submit "Submit Review", class: "btn btn-lg btn-info" %>
+        <% end %>
+    </div>
+</div>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %><br>
-  <%= f.label "Tell us your thoughts" %>
-  <%= f.text_area :content %><br>
-  <%= f.label :stars %>
-  <%= f.number_field :stars %><br>
-  <%= f.hidden_field :user_id, value: @user.id %><br>
-  <%= f.hidden_field :restaurant_id, value: @restaurant.id %><br>
-
-  <%= f.submit "Submit Review" %>
-
-<% end %>
