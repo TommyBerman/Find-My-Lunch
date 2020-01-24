@@ -1,18 +1,23 @@
-<%= render 'short_details' %>
-
-<h4>Address:</h4>
-<p><%= @restaurant.address %><p>
-<br>
-<div>
-<iframe width="600" height="450" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBYm6fmd3--ZbWcY-IQRc02y4ZZ5vU6j20&q=place_id:<%=@request_id%>" allowfullscreen></iframe>
+<div class="container card">
+  <div class="row">
+    <div class="col-sm">
+        <%= render 'short_details' %>
+    </div>
+    <div class="col-sm">
+        <%= render 'address' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+        <% if @reviews != nil%>
+            <%= render :partial=> 'reviews/reviews_list'%>
+        <%else%>
+            <p>There are no reviews for this restaurant yet! Be the first!</p> 
+        <% end%>
+        <%= render :partial=> 'reviews/embbeded_review' %>
+    </div>
+  </div>
 </div>
-<% if @reviews != nil%>
-    <%= render :partial=> 'reviews/reviews_list'%>
-<%else%>
-    <p>There are no reviews for this restaurant yet! Be the first!</p> 
-<% end%>
-<%= render :partial=> 'reviews/embbeded_review' %>
 
 
 
