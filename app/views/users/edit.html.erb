@@ -1,3 +1,6 @@
+<div class="container">
+  <div id="login" class="jumbotron p-4 p-md-5 text-secondary">
+
 <h1><%= @user.name%>'s Account</h1>
 
 <h2>Edit your details: <h2>
@@ -16,3 +19,5 @@
 <br><br>
 <%= link_to "Delete my account", user_path(@user), { method: 'delete', data: {confirm: "Are you sure you want to delete your account? This can't be reversed, you'll have to sign up again to use the app!"}} %>
 
+  </div>
+</div>

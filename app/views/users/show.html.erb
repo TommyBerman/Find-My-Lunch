@@ -1,3 +1,6 @@
+<div class="container">
+  <div id="login" class="jumbotron p-4 p-md-5 text-secondary">
+
 <h1><%= @user.name%>'s Account</h1>
 
 <p><%= link_to "Edit my account details", edit_user_path(@user) %></p>
@@ -19,4 +22,4 @@
         <%= render :partial=> 'reviews/reviews_list'%>
         <% end %>
 
-
+</div></div>

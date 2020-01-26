@@ -5,6 +5,7 @@ class UsersController < ApplicationController
       if session[:restaurant_id]
         @restaurant = Restaurant.find(session[:restaurant_id])
       end
+      @reviews = Review.all.select { |r| r.user = @user}
     end
 
     def splash
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
     def destroy
       set_user
       @user.destroy
+      session[:user_id] = nil
       flash[:notice] = "Bye #{@user.name}! Your account was successfully deleted, sign up again to use the app!"
       redirect_to signup_path
     end
